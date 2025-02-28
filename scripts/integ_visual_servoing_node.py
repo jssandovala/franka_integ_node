@@ -4,6 +4,7 @@ import rospy
 from sensor_msgs.msg import Image, JointState
 from geometry_msgs.msg import TwistStamped
 from franka_msgs.msg import FrankaState
+from keyboard.msg import Key
 from cv_bridge import CvBridge
 import cv2
 
@@ -18,7 +19,7 @@ class IntegVisualServoingNode:
         rospy.Subscriber('/franka_state_controller/franka_states', FrankaState, self.cart_states_callback)
 
         # Publisher
-        self.cart_vel_pub = rospy.Publisher('/cart_vel_desired', TwistStamped, queue_size=10)
+        self.cart_vel_pub = rospy.Publisher('/cart_del_desired_', TwistStamped, queue_size=10)
 
         # Rate of the loop 
         self.rate = rospy.Rate(10)
@@ -65,6 +66,7 @@ class IntegVisualServoingNode:
             twist_msg.twist.angular.y = 0.0
             twist_msg.twist.angular.z = 0.0
             self.cart_vel_pub.publish(twist_msg)
+            rospy.loginfo("Published zero Cartesian velocity")
 
         self.rate.sleep()
 
