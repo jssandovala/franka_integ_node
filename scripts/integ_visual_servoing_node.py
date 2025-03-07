@@ -4,7 +4,6 @@ import rospy
 from sensor_msgs.msg import Image, JointState
 from geometry_msgs.msg import TwistStamped
 from franka_msgs.msg import FrankaState
-from keyboard.msg import Key
 from cv_bridge import CvBridge
 import cv2
 
