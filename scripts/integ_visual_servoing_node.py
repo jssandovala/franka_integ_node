@@ -18,7 +18,7 @@ class IntegVisualServoingNode:
         rospy.Subscriber('/franka_state_controller/franka_states', FrankaState, self.cart_states_callback)
 
         # Publisher
-        self.cart_vel_pub = rospy.Publisher('/cart_del_desired_', TwistStamped, queue_size=10)
+        self.cart_vel_pub = rospy.Publisher('/cart_vel_desired_', TwistStamped, queue_size=10)
 
         # Rate of the loop 
         self.rate = rospy.Rate(10)
